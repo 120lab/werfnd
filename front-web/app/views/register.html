@@ -1,0 +1,13 @@
+  <form name="register" ng-submit="signin()" class="form-signin" novalidate>
+		<h1 class="form-signin-heading text-muted">Log in</h1>
+		<input name="email" ng-model="email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
+		<p class="help-block" ng-show="register.email.$dirty && register.email.$invalid">We need a proper email</p>
+		<input name="password" type="password" class="form-control" placeholder="Password" required ng-model="register.password.value" same-as>
+		<p class="help-block" ng-show="register.password.$dirty && register.password.$invalid">We need a 6-12 characters password </p>
+		<button name="signin" ng-disabled="register.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">
+			GO
+		</button>
+		<!-- <button  class="btn btn-lg btn-primary btn-block" ui-sref="main">
+			Back to main
+		</button>     -->
+	</form>
