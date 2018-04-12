@@ -15,7 +15,7 @@ angular.module('weRfnd')
       
       var url = 'http://localhost:3000/register';
       var user = {
-        user : $scope.email,
+        username : $scope.email,
         password : $scope.register.password.value
       };
       var config = {};

@@ -29,33 +29,30 @@ function getClient(){
 }
 
 /** execute sql Command */
-module.exports.executeCommand = function(sqlCommand) {
+module.exports.executeCommand = function(sqlCommand, callback) {
 
     var client = getClient();
 
     client.connect(err => {
         if (err) throw err;
         else {
-            executeClient(client, sqlCommand);
+            executeClient(client, sqlCommand, function(respose){
+                return callback(respose);    
+            });
         }
     });
 };
 
 /** Kick start function whcih make new db metadata and demo data */ 
-function executeClient(client, sqlCommand) {
+function executeClient(client, sqlCommand, callback) {
 
-    client
-        .query(sqlCommand)
-        .then(() => {
+    const query = client.query(sqlCommand, (err, res) => {
+        if(err) throw err;
+        else{
             console.log('sql command successfully executed!' + sqlCommand);
-        })
-        .catch(err => 
-            console.log(err))
-        .then(() => {
-            client.end(console.log('Closed client connection'));
-            console.log('Finished execution, exiting now');
-            //process.exit();
-        });
+            return callback(res.rowCount);
+        }
+      }) 
 };
  
 /** execute sql Command */

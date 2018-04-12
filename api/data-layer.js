@@ -1,26 +1,31 @@
 const db = require('./postgres-db-provider.js');
 
 /** Kick start function whcih make new db metadata and demo data */ 
-module.exports.createDemoDatabase = function() {
+module.exports.createDemoDatabase = function(callback) {
     const sql = `
         DROP TABLE IF EXISTS users;
         CREATE TABLE users (id serial PRIMARY KEY, username VARCHAR(500), password VARCHAR(500));
         INSERT INTO users (username, password) VALUES ('demo@demo.com', 'demopass');
     `;
     
-    db.executeCommand(sql);
+    
+    db.executeCommand(sql , function(respose){
+        return callback(respose);
+    });
 }
 
 /**
  * Add user to db
  * @param {*user object} user 
  */
-module.exports.addUser = function(user) {
+module.exports.addUser = function(user, callback) {
     const sql = `
-        INSERT INTO users (username, pass) VALUES (` + user.username +  `,` + user.password + `);
+        INSERT INTO users (username, password) VALUES ('` + user.username +  `','` + user.password + `');
     `;
     
-    db.executeCommand(sql);
+    db.executeCommand(sql , function(respose){
+        return callback(respose);
+    });
 }
 
 /**
@@ -36,27 +41,3 @@ module.exports.getUsers = function(callback) {
     });
 
 }
-
-//var getUsers = function(){
-    // var result = [{user: idan},{user:Yoram}];
-
-    // return JSON.stringify(results);
-    // const query = 'SELECT * FROM users;';
-    // client.query(query)
-    // .then(res => {
-    //     const rows = res.rows;
-
-    //     rows.map(row => {
-    //         console.log(`Read: ${JSON.stringify(row)}`);
-    //         result.push(row);
-    //     });
-
-    //     //process.exit();
-    //     console.log(JSON.stringify(result));
-    //     return JSON.stringify(result);
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // });
-//}
-

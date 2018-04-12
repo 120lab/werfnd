@@ -24,24 +24,24 @@ app.use(function(req,res,next){
 });
 
 app.post('/register', function(req,res){
-    // const u = new users.user(req.username, req.pass);
-    // dataLayer.addUser( err => function(respose){
-    //     res.send(respose);
-    // });
-    console.log(req.params);
-    res.send('ok');
+    const u = new users.user(req.body.username, req.body.password);
+    
+    dataLayer.addUser( u , function(response) {
+        res.status(200).json(u);
+    });
 })
 
 app.post('/demodb', function(req, res){
-    dataLayer.createDemoDatabase();
-    res.send('ok');//.json(await (queryDatabase()))
-     //queryDatabase();
+
+    dataLayer.createDemoDatabase( function(respose){
+        res.status(200).send('ok');
+    });
 })
 
 app.post('/users', function(req, res){
     
     dataLayer.getUsers( function(respose){
-        res.send(respose);
+        res.status(200).send(respose);
     });
 }) 
 
