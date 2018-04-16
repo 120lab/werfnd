@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dataLayer = require('./data-layer.js');
-const users = require('./entities/user.js');
+const dataLayer = require('./data-layer/data-layer-db.js');
+const users = require('./models/user.js');
 /**
  * Init express package
  */

@@ -1,5 +1,5 @@
 //Private
-var privateVariable = true;
+var privateData = "";
 
 //Public
 module.exports.user = function (name, pass) {
