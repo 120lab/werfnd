@@ -1,7 +1,13 @@
 language: node_js
-
 node_js:
   - stable
+  
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install nodemon -g
 
 install:
   - npm install
