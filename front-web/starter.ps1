@@ -10,5 +10,4 @@ npm install -g bower
 npm install -g grunt
 npm install -g generator-angular
 npm install -g generator-karma
-npm install -g jit-grunt
 

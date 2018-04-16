@@ -31,3 +31,11 @@ powershell.exe 'c:/Work/Workspaces/weRfnd/api/starter.ps1'
 ## =================
 
 Running `nodemon ./api.js localhost 3000` will run the unit tests with debug mode.
+
+## Git comands
+## ===========
+
+git add .
+git commit -m “”
+git tag v0.1.0
+git push origin master --tags
