@@ -1,5 +1,9 @@
 {
-  "name": "weRfnd",
+  "name": "api",
+  "version": "1.0.0",
+  "description": "weRfnd api server",
+  "author": "Idan Gvili",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",

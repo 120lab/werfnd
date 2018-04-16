@@ -1,4 +1,20 @@
 language: node_js
-
 node_js:
   - stable
+  
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g yo
+  - npm install -g bower
+  - npm install -g grunt
+  - npm install -g generator-angular
+  - npm install -g generator-karma
+
+install:
+  - npm install
+
+script:
+  - npm test 
